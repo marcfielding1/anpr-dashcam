@@ -1,7 +1,7 @@
 const Promise = require('bluebird');
 const anpr = Promise.promisifyAll(require('node-openalpr'));
-const axios = require('axios);
-const fs = require('fs')
+const axios = require('axios');
+const fs = require('fs');
                       
 module.exports = {
   getNumberPlate: async (filePath) => {
