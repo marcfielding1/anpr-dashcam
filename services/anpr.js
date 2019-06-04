@@ -1,14 +1,20 @@
 const Promise = require('bluebird');
 const anpr = Promise.promisifyAll(require('node-openalpr'));
-
+const axios = require('axios);
+const fs = require('fs')
+                      
 module.exports = {
   getNumberPlate: async (filePath) => {
-    anpr.Start(null, null, null, null, 'eu');
+    //anpr.Start(null, null, null, null, 'eu');
 
     let out;
 
     try {
-      out = await anpr.IdentifyLicenseAsync(filePath);
+      let image = fs.readFileSync(filePath, { encoding: 'base64' });
+
+      out = await axios.post("https://api.openalpr.com/v2/recognize_bytes?recognize_vehicle=1&country=us&secret_key=" + "sk_4ac6c9248e64083525976471",
+                            image)
+      // anpr.IdentifyLicenseAsync(filePath);
     } catch (e) {
       throw e;
     }
