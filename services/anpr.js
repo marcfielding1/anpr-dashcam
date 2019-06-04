@@ -12,7 +12,7 @@ module.exports = {
     try {
       let image = fs.readFileSync(filePath, { encoding: 'base64' });
 
-      out = await axios.post("https://api.openalpr.com/v2/recognize_bytes?recognize_vehicle=1&country=us&secret_key=" + "sk_4ac6c9248e64083525976471",
+      out = await axios.post("https://api.openalpr.com/v2/recognize_bytes?recognize_vehicle=1&country=gb&secret_key=" + "sk_4ac6c9248e64083525976471",
                             image)
       // anpr.IdentifyLicenseAsync(filePath);
     } catch (e) {
